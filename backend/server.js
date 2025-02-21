@@ -6,6 +6,10 @@ const mongoose = require('mongoose')
 require('dotenv').config();
 const cors = require('cors')
 
+
+app.use(express.json())
+app.use(cors())
+app.use(cookieparser())
 const connection = async() =>{
     try {
     await mongoose.connect(process.env.MONGODB);
