@@ -18,8 +18,8 @@ const UserSchema = new mongoose({
         type: Schema.Types.ObjectId,
         ref: 'Query',
     }],
-}, 
-{
-    timestamps: true
+},
+    {
+        timestamps: true
 });
 module.exports = mongoose.model("User", UserSchema);
