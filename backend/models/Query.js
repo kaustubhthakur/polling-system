@@ -17,7 +17,7 @@ const QuerySchema = new mongoose.Schema({
         },
         votes: {
             type: [String],
-            default: 0
+            default: []
         }
     }],
     startDate: {

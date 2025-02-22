@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
     },
     queries: [{
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: 'Query',
     }],
 },
