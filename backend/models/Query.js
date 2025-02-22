@@ -1,8 +1,11 @@
-const mongoose = require('mongoose')
-const QuerySchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const QuerySchema = new Schema({
     query: {
         type: String,
         required: true,
+        trim: true
     },
     creator: {
         type: Schema.Types.ObjectId,
@@ -15,10 +18,11 @@ const QuerySchema = new mongoose.Schema({
             required: true,
             trim: true
         },
-        votes: {
-            type: [String],
+        votes: [{
+            type: Schema.Types.ObjectId,
+            ref: 'User',
             default: []
-        }
+        }]
     }],
     startDate: {
         type: Date,
@@ -36,9 +40,7 @@ const QuerySchema = new mongoose.Schema({
         type: String,
         enum: ['technology', 'politics', 'sports', 'entertainment']
     }]
-},
-    {
-        timestamps: true
-
-    });
-module.exports = mongoose.model("Query", QuerySchema)
+}, {
+    timestamps: true
+});
+module.exports = mongoose.model("Query",QuerySchema)
