@@ -1,43 +1,24 @@
-import React, { useState } from 'react';
-import './Navbar.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  return (
-    <nav className="navbar">
-      {/* Hamburger Menu (Mobile) */}
-      <div 
-        className={`hamburger ${isMenuOpen ? 'active' : ''}`} 
-        onClick={toggleMenu}
-      >
-        <span className="bar"></span>
-        <span className="bar"></span>
-        <span className="bar"></span>
-      </div>
-
-      {/* Logo */}
-      <div className="logo">
-        <span>Your Logo</span>
-      </div>
-
-      {/* Desktop Navigation */}
-      <div className="nav-links">
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-      </div>
-
-      {/* Mobile Navigation */}
-      <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}>
-        <a href="/login" onClick={toggleMenu}>Login</a>
-        <a href="/register" onClick={toggleMenu}>Register</a>
-      </div>
-    </nav>
-  );
+    return (
+        <nav className="navbar">
+            <div className="logo">MyLogo</div>
+            <div className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
+                <span className="bar"></span>
+                <span className="bar"></span>
+                <span className="bar"></span>
+            </div>
+            <ul className={isOpen ? "nav-links active" : "nav-links"}>
+                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/register">Register</Link></li>
+            </ul>
+        </nav>
+    );
 };
 
 export default Navbar;
