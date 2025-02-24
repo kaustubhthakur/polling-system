@@ -12,18 +12,10 @@ const QuerySchema = new Schema({
         ref: 'User',
         required: true
     },
-    options: [{
-        text: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        votes: [{
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-            default: []
-        }]
-    }],
+    options: {
+        type:[String],
+        default:[],
+    },
     startDate: {
         type: Date,
         default: Date.now
